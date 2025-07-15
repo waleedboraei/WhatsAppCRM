@@ -1,0 +1,12 @@
+D:\WhatsApp CRM\src\WhatsAppCRM.Domain\bin\Debug\net9.0\WhatsAppCRM.Domain.deps.json
+D:\WhatsApp CRM\src\WhatsAppCRM.Domain\bin\Debug\net9.0\WhatsAppCRM.Domain.runtimeconfig.json
+D:\WhatsApp CRM\src\WhatsAppCRM.Domain\bin\Debug\net9.0\WhatsAppCRM.Domain.dll
+D:\WhatsApp CRM\src\WhatsAppCRM.Domain\bin\Debug\net9.0\WhatsAppCRM.Domain.pdb
+D:\WhatsApp CRM\src\WhatsAppCRM.Domain\obj\Debug\net9.0\WhatsAppCRM.Domain.csproj.AssemblyReference.cache
+D:\WhatsApp CRM\src\WhatsAppCRM.Domain\obj\Debug\net9.0\WhatsAppCRM.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\WhatsApp CRM\src\WhatsAppCRM.Domain\obj\Debug\net9.0\WhatsAppCRM.Domain.csproj.CoreCompileInputs.cache
+D:\WhatsApp CRM\src\WhatsAppCRM.Domain\obj\Debug\net9.0\WhatsAppCRM.Domain.dll
+D:\WhatsApp CRM\src\WhatsAppCRM.Domain\obj\Debug\net9.0\refint\WhatsAppCRM.Domain.dll
+D:\WhatsApp CRM\src\WhatsAppCRM.Domain\obj\Debug\net9.0\WhatsAppCRM.Domain.pdb
+D:\WhatsApp CRM\src\WhatsAppCRM.Domain\obj\Debug\net9.0\WhatsAppCRM.Domain.genruntimeconfig.cache
+D:\WhatsApp CRM\src\WhatsAppCRM.Domain\obj\Debug\net9.0\ref\WhatsAppCRM.Domain.dll
