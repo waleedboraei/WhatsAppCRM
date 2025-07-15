@@ -1,0 +1,15 @@
+﻿@model dynamic
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Chat";
+    var selectedCustomer = ViewBag.SelectedCustomer as WhatsAppCRM.Application.DTOs.CustomerDto;
+}
+<form asp-action="SendMessage" asp-controller="Messages" method="post" class="border-top p-2 d-flex align-items-center gap-2">
+    <input type="hidden" name="customerId" value="@selectedCustomer?.Id" />
+    <button class="btn btn-light" type="button"><i class="bi bi-paperclip"></i></button>
+    <button class="btn btn-light" type="button"><i class="bi bi-emoji-smile"></i></button>
+    <input type="text" name="content" class="form-control" placeholder="Message..." required />
+    <button type="submit" class="btn btn-success">
+        <i class="bi bi-whatsapp"></i> Send
+    </button>
+</form>

@@ -1,0 +1,23 @@
+@model IEnumerable<WhatsAppCRM.Application.DTOs.CustomerDto>
+@{
+    ViewData["Title"] = "Customers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Customers</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Phone Number</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.Name</td>
+                <td>@c.PhoneNumber</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,23 @@
+@{
+    ViewData["Title"] = "Reports";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Reports</h2>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Total Customers</h5>
+                <p class="card-text display-6">@ViewBag.TotalCustomers</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Total Messages</h5>
+                <p class="card-text display-6">@ViewBag.TotalMessages</p>
+            </div>
+        </div>
+    </div>
+</div>

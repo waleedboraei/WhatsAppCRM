@@ -1,0 +1,21 @@
+@model WhatsAppCRM.Application.DTOs.MessageDto
+@{
+    ViewData["Title"] = "Send Message";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Send WhatsApp Message</h2>
+@if (ViewBag.Success != null)
+{
+    <div class="alert alert-success">Message sent successfully!</div>
+}
+<form asp-action="Send" method="post">
+    <div class="mb-3">
+        <label asp-for="PhoneNumber" class="form-label"></label>
+        <input asp-for="PhoneNumber" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="TextContent" class="form-label"></label>
+        <textarea asp-for="TextContent" class="form-control"></textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Send</button>
+</form>

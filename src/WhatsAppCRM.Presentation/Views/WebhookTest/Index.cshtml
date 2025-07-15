@@ -1,0 +1,20 @@
+@{
+    ViewData["Title"] = "Test Webhook Message";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Send Test Message</h2>
+@if (ViewBag.Success != null)
+{
+    <div class="alert alert-success">Message sent successfully!</div>
+}
+<form method="post" asp-action="SendTestMessage">
+    <div class="mb-3">
+        <label class="form-label">Phone Number</label>
+        <input name="phoneNumber" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Message</label>
+        <textarea name="messageText" class="form-control"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Send</button>
+</form>

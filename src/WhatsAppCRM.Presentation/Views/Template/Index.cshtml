@@ -1,0 +1,27 @@
+@model IEnumerable<WhatsAppCRM.Domain.Entities.Template>
+@{
+    ViewData["Title"] = "Templates";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Message Templates</h2>
+<a class="btn btn-primary mb-3" href="/Template/Create">Add Template</a>
+<table class="table">
+    <thead>
+        <tr><th>Name</th><th>Content</th><th></th></tr>
+    </thead>
+    <tbody>
+        @foreach (var t in Model)
+        {
+            <tr>
+                <td>@t.Name</td>
+@*                 <td>@t.Content</td>
+ *@               <td>
+                    <a href="/Template/Edit/@t.Id" class="btn btn-sm btn-warning">Edit</a>
+                    <form method="post" asp-action="Delete" asp-route-id="@t.Id" style="display:inline">
+                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

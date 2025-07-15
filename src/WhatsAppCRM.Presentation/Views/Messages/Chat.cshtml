@@ -1,0 +1,97 @@
+@model dynamic
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Chat";
+    var customers = ViewBag.Customers as List<WhatsAppCRM.Application.DTOs.CustomerDto>;
+    var messages = ViewBag.Messages as List<WhatsAppCRM.Application.DTOs.MessageDto>;
+    var selectedCustomer = ViewBag.SelectedCustomer as WhatsAppCRM.Application.DTOs.CustomerDto;
+}
+
+<div class="container-fluid vh-100 d-flex flex-column">
+    <div class="row flex-grow-1">
+        <!-- Left Column: Customers -->
+        <div class="col-md-3 border-end overflow-auto bg-light">
+            <div class="p-2 border-bottom">
+                <input type="text" class="form-control" placeholder="All Conversations" />
+            </div>
+            @foreach (var customer in customers)
+            {
+                <div class="d-flex align-items-center border-bottom p-2">
+                    <div class="me-2">
+                        <img src="https://via.placeholder.com/40" class="rounded-circle" />
+                    </div>
+                    <div class="flex-grow-1">
+                        <div class="fw-bold">@customer.Name</div>
+                        <small>@customer.PhoneNumber</small>
+                        @if (customer.HasUnreadMessages)
+                        {
+                            <span class="badge bg-danger ms-1">!</span>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Center Column: Messages -->
+        <div class="col-md-6 d-flex flex-column">
+            <div class="border-bottom p-2 d-flex align-items-center justify-content-between">
+                <div class="fw-bold">@selectedCustomer?.Name</div>
+                @if (selectedCustomer?.IsOnline == true)
+                {
+                    <span class="text-success small">Online</span>
+                }
+            </div>
+            <div class="flex-grow-1 overflow-auto p-3 bg-white" id="messageContainer">
+                @foreach (var msg in messages)
+                {
+                    <div class="d-flex mb-2 @(msg.Direction == "outgoing" ? "justify-content-end" : "justify-content-start")">
+                        <div class="p-2 rounded bg-success text-white" style="max-width: 70%;">
+                            <div>@msg.Content</div>
+                            <div class="text-end small">
+                                @msg.CreatedAt.ToShortTimeString()
+                                @if (msg.IsSeen)
+                                {
+                                    <i class="bi bi-check2-all text-primary ms-1"></i>
+                                }
+                                else if (msg.IsRead)
+                                {
+                                    <i class="bi bi-check-all text-muted ms-1"></i>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+                <form asp-action="SendMessage" asp-controller="Messages" method="post" class="border-top p-2 d-flex align-items-center gap-2">
+                    <input type="hidden" name="customerId" value="@selectedCustomer?.Id" />
+                    <button class="btn btn-light" type="button"><i class="bi bi-paperclip"></i></button>
+                    <button class="btn btn-light" type="button"><i class="bi bi-emoji-smile"></i></button>
+                    <input type="text" name="content" class="form-control" placeholder="Message..." required />
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-whatsapp"></i> Send
+                    </button>
+                </form>
+        </div>
+
+        <!-- Right Column: Customer Info -->
+        <div class="col-md-3 border-start p-3 bg-white">
+            @if (selectedCustomer != null)
+            {
+                <div class="text-center mb-3">
+                    <img src="https://via.placeholder.com/80" class="rounded-circle" />
+                    <h5 class="mt-2">@selectedCustomer.Name</h5>
+                    <span class="text-muted">@selectedCustomer.Email</span>
+                </div>
+                <div><strong>Phone:</strong> @selectedCustomer.PhoneNumber</div>
+                <div><strong>Country:</strong> @selectedCustomer.Country</div>
+                <div><strong>Local Time:</strong> @selectedCustomer.LocalTime.ToShortTimeString()</div>
+                <div><strong>Created At:</strong> @selectedCustomer.CreatedAt.ToShortDateString()</div>
+                <div class="mt-3">
+                    <textarea class="form-control" rows="2" placeholder="Notes"></textarea>
+                    <button class="btn btn-outline-secondary w-100 mt-2">Add Note</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
