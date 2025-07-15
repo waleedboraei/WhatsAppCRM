@@ -1,59 +1,62 @@
-﻿using WhatsAppCRM.Application.DTOs;
-using WhatsAppCRM.Domain.Interfaces;
-using WhatsAppCRM.Domain.Entities;
+﻿using System;
+using System.Threading.Tasks;
+using WhatsAppCRM.Application.DTOs;
 using WhatsAppCRM.Application.Interfaces;
-using AutoMapper;
+using WhatsAppCRM.Domain.Entities;
+using WhatsAppCRM.Domain.Enums;
+using WhatsAppCRM.Domain.Interfaces;
+using IMessageRepository = WhatsAppCRM.Domain.Interfaces.IMessageRepository;
 
 namespace WhatsAppCRM.Application.Services
 {
-    public class MessageService : IMessageService
+    public class MessageService
     {
-        private readonly Interfaces.IMessageRepository _messageRepository;
-        private readonly IMapper _mapper;
+        private readonly IMessageRepository _messageRepository;
+        private readonly IWhatsAppMessageSender _whatsAppSender;
 
-        public MessageService(Interfaces.IMessageRepository messageRepository, IMapper mapper)
+        public MessageService(IMessageRepository messageRepository, IWhatsAppMessageSender whatsAppSender)
         {
             _messageRepository = messageRepository;
-            _mapper = mapper;
+            _whatsAppSender = whatsAppSender;
         }
 
-        public async Task SendMessageAsync(MessageDto dto)
+        public async Task<SendMessageResponseDto> SendTextMessageAsync(SendMessageRequestDto request)
         {
-            var message = new Message
+            var response = new SendMessageResponseDto();
+
+            try
             {
-                CustomerId = dto.CustomerId,
-                TextContent = dto.TextContent,
-                Direction = dto.Direction,
-                Timestamp = DateTime.UtcNow,
-                Status = "sent"
-            };
+                var message = new Message
+                {
+                    Id = Guid.NewGuid(),
+                    FromPhone = "YOUR_BUSINESS_PHONE", // يمكن تغييره لاحقاً من الإعدادات
+                    ToPhone = request.ToPhone,
+                    Content = request.TextBody,
+                    Type = MessageType.Text,
+                    Direction = MessageDirection.Outgoing,
+                    Timestamp = DateTime.UtcNow,
+                    Status = MessageStatus.Pending
+                };
 
-            await _messageRepository.AddAsync(message);
-        }
-        public async Task<List<MessageDto>> GetAllAsync()
-        {
-            var messages = await _messageRepository.GetAllAsync();
-            return messages.Select(m => new MessageDto
+                await _messageRepository.AddAsync(message);
+
+                string waMessageId = await _whatsAppSender.SendTextMessageAsync(request.ToPhone, request.TextBody);
+
+                message.WhatsAppMessageId = waMessageId;
+                message.Status = MessageStatus.Sent;
+
+                await _messageRepository.UpdateAsync(message);
+
+                response.Success = true;
+                response.WhatsAppMessageId = waMessageId;
+            }
+            catch (Exception ex)
             {
-                Id = m.Id,
-                CustomerId = m.CustomerId,
-                Content = m.Content,
-                Direction = m.Direction,
-                CreatedAt = m.CreatedAt
-            }).ToList();
-        }
+                response.Success = false;
+                response.ErrorMessage = ex.Message;
+            }
 
-        public async Task<List<MessageDto>> GetByCustomerIdAsync(int customerId)
-        {
-            var messages = await _messageRepository.GetByCustomerIdAsync(customerId);
-            return _mapper.Map<List<MessageDto>>(messages);
-        }
-
-        public async Task SendAsync(MessageDto dto)
-        {
-            var entity = _mapper.Map<Message>(dto);
-            await _messageRepository.AddAsync(entity);
+            return response;
         }
     }
 }
-

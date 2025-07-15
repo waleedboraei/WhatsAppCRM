@@ -3,6 +3,6 @@
     public enum MessageDirection
     {
         Inbound,
-        Outbound
+        Outgoing
     }
 }

@@ -33,6 +33,9 @@ builder.Services.AddAuthorization(options =>
 {
     WhatsAppCRM.Presentation.Authorization.Policies.CustomAuthorizationPolicies.AddCustomPolicies(options);
 });
+builder.Services.Configure<WhatsAppSettings>(builder.Configuration.GetSection("WhatsAppSettings"));
+builder.Services.AddHttpClient<IWhatsAppMessageSender, WhatsAppMessageSender>();
+
 
 // Application services
 builder.Services.AddScoped<ICustomerService, CustomerService>();

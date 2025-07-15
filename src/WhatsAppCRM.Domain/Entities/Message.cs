@@ -1,23 +1,18 @@
+using WhatsAppCRM.Domain.Enums;
+
 namespace WhatsAppCRM.Domain.Entities
 {
     public class Message
     {
-        public int Id { get; set; }
-        public int CustomerId { get; set; }
-        public Customer Customer { get; set; } = default!;
-
-        public string Direction { get; set; } = "Outbound"; // "Outbound" or "Inbound"
-        public string TextContent { get; set; } = string.Empty;
-        public DateTime Timestamp { get; set; } = DateTime.UtcNow;
-        public string? Status { get; set; }
+        public Guid Id { get; set; }
         public string? WhatsAppMessageId { get; set; }
-        public string Content { get; set; } = string.Empty;
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-
-        public bool IsRead { get; set; }
-        public bool IsSeen { get; set; }
-        public DateTime? DeliveredAt { get; set; }
-        public DateTime? SeenAt { get; set; }
+        public string FromPhone { get; set; }
+        public string ToPhone { get; set; }
+        public string Content { get; set; }
+        public MessageType Type { get; set; }
+        public MessageDirection Direction { get; set; }
+        public MessageStatus Status { get; set; }
+        public DateTime Timestamp { get; set; }
 
     }
 }
