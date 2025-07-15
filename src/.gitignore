@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/src/WhatsAppCRM.Application/bin/Debug/net9.0
+/.vs
+/src/WhatsAppCRM.Application/obj
+/src/WhatsAppCRM.Domain/bin/Debug/net9.0
+/src/WhatsAppCRM.Domain/obj
+/src/WhatsAppCRM.Infrastructure/bin/Debug/net9.0
+/src/WhatsAppCRM.Infrastructure/obj
+/src/WhatsAppCRM.Presentation/bin/Debug/net9.0
+/src/WhatsAppCRM.Presentation/obj
