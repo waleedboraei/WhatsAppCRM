@@ -1,0 +1,15 @@
+D:\WhatsApp CRM\src\WhatsAppCRM.Application\bin\Debug\net9.0\WhatsAppCRM.Application.deps.json
+D:\WhatsApp CRM\src\WhatsAppCRM.Application\bin\Debug\net9.0\WhatsAppCRM.Application.runtimeconfig.json
+D:\WhatsApp CRM\src\WhatsAppCRM.Application\bin\Debug\net9.0\WhatsAppCRM.Application.dll
+D:\WhatsApp CRM\src\WhatsAppCRM.Application\bin\Debug\net9.0\WhatsAppCRM.Application.pdb
+D:\WhatsApp CRM\src\WhatsAppCRM.Application\bin\Debug\net9.0\WhatsAppCRM.Domain.dll
+D:\WhatsApp CRM\src\WhatsAppCRM.Application\bin\Debug\net9.0\WhatsAppCRM.Domain.pdb
+D:\WhatsApp CRM\src\WhatsAppCRM.Application\obj\Debug\net9.0\WhatsAppCRM.Application.csproj.AssemblyReference.cache
+D:\WhatsApp CRM\src\WhatsAppCRM.Application\obj\Debug\net9.0\WhatsAppCRM.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\WhatsApp CRM\src\WhatsAppCRM.Application\obj\Debug\net9.0\WhatsAppCRM.Application.csproj.CoreCompileInputs.cache
+D:\WhatsApp CRM\src\WhatsAppCRM.Application\obj\Debug\net9.0\WhatsApp.F55F8976.Up2Date
+D:\WhatsApp CRM\src\WhatsAppCRM.Application\obj\Debug\net9.0\WhatsAppCRM.Application.dll
+D:\WhatsApp CRM\src\WhatsAppCRM.Application\obj\Debug\net9.0\refint\WhatsAppCRM.Application.dll
+D:\WhatsApp CRM\src\WhatsAppCRM.Application\obj\Debug\net9.0\WhatsAppCRM.Application.pdb
+D:\WhatsApp CRM\src\WhatsAppCRM.Application\obj\Debug\net9.0\WhatsAppCRM.Application.genruntimeconfig.cache
+D:\WhatsApp CRM\src\WhatsAppCRM.Application\obj\Debug\net9.0\ref\WhatsAppCRM.Application.dll
